@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./App.css";
 
 function App() {
   const [acara, setAcara] = useState([]);
@@ -106,7 +107,7 @@ function App() {
             <p>{item.isi}</p>
             {item.image && (
               <img
-                src={item.image}
+                src={`http://localhost:5000${item.image}`}
                 alt={item.judul}
                 style={{ maxWidth: "300px" }}
               />
