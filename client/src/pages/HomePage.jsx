@@ -14,13 +14,16 @@ function HomePage() {
         <Navbar /> {/* Include Navbar component */}
         <header className={styles.heroSection}>
           <div className={styles.heroText}>
+            <div className={styles.heroLabel}>
+              <span className={styles.heroLabelText}>ILKOM NEWS</span>
+              <span className={styles.heroLabelLine}></span>
+            </div>
             <h1 className={styles.heroTitle}>
               One platform to
               <span className={styles.highlight}>
                 {" "}
                 give you information
               </span>{" "}
-              <br />
               for boost your activities and achievement
             </h1>
             <p className={styles.heroSubtitle}>
@@ -40,7 +43,6 @@ function HomePage() {
               />
             </div>
             <div className={styles.heroImageDecor}></div>
-
           </div>
         </header>
         <section className={styles.tabSection}>
