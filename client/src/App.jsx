@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import Admin from "./pages/Admin";
 import InfoAkademik from "./pages/InfoAkademik";
 import "./App.css"; // Import CSS file for global styles
+import ScrollToTop from "./components/ComponentUtama/ScrollToTop";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
       </nav> */}
-
+      <ScrollToTop /> {/* Komponen untuk scroll ke atas saat navigasi */}
       {/* Routing: hanya satu komponen ditampilkan berdasarkan path */}
       <Routes>
         <Route path="/" element={<HomePage />} />

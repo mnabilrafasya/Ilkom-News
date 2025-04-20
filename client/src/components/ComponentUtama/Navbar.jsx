@@ -5,6 +5,7 @@ import styles from "./components.module.css";
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
+      <div className={styles.navbarInner}>
       <div className={styles.navbarLogo}>
         <img
           src="logoBEM.png"
@@ -42,6 +43,7 @@ const Navbar = () => {
           </a>
         </li>
       </ul>
+      </div>
     </nav>
   );
 };
