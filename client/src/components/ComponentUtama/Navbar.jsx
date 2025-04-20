@@ -1,12 +1,16 @@
 // src/components/Navbar.js
 import React from "react";
-import styles from "../pages/HomePage.module.css"; // Import CSS module for styling
+import styles from "./components.module.css";
 
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarLogo}>
-        <img src="logoBEM.png" alt="Logo Artha Darma" className={styles.logoImage} />
+        <img
+          src="logoBEM.png"
+          alt="Logo Artha Darma"
+          className={styles.logoImage}
+        />
         <div className={styles.navbarText}>
           <span className={styles.decorativeBold}>A</span>
           <span className={styles.regular}>RTHA</span>{" "}
@@ -24,7 +28,7 @@ const Navbar = () => {
         </li>
         <li>
           <a href="#" className={styles.navbarLink}>
-            About Us
+            About
           </a>
         </li>
         <li>

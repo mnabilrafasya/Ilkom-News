@@ -1,0 +1,41 @@
+import React from "react";
+import styles from "../../pages/HomePage.module.css"; 
+import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+
+const HeroSection = () => {
+  const navigate = useNavigate(); // Create a navigate function
+  
+  return (
+    <header className={styles.heroSection}>
+      <div className={styles.heroText}>
+        <div className={styles.heroLabel}>
+          <span className={styles.heroLabelText}>ILKOM NEWS</span>
+          <span className={styles.heroLabelLine}></span>
+        </div>
+        <h1 className={styles.heroTitle}>
+          One platform to
+          <span className={styles.highlight}> give you information</span> for
+          boost your activities and achievement
+        </h1>
+        <p className={styles.heroSubtitle}>
+          Ilkom news adalah tempat untuk mencari berbagai informasi terkait
+          fakultas, informasi beasiswa, info lomba, dan berbagai informasi
+          menarik lainnya. Mereka ketinggalan, kamu jangan.
+        </p>
+        <button onClick={() => navigate("/info-akademik")} className={styles.heroButton}>Read More</button>
+      </div>
+
+      <div className={styles.heroImageContainer}>
+        <div className={styles.heroImageWrapper}>
+          <img
+            src="https://picsum.photos/400/400?random=1"
+            alt="Universitas"
+            className={styles.heroImage}
+          />
+        </div>
+        <div className={styles.heroImageDecor}></div>
+      </div>
+    </header>
+  );
+};
+export default HeroSection;
