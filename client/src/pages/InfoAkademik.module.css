@@ -1,19 +1,19 @@
 .infoAkademikContainer {
-  font-family: Arial, sans-serif;
+  font-family: "Gotham Book", cursive;
   color: #333;
+  background-color: white;
   padding-top: 1rem;
-  margin-inline: 100px;
+  min-height: 100vh;
 }
 
-.body {
-  background-color: white;
-  margin-inline: 4rem;
-}
 /* Post Header */
 .postHeader {
-  margin-inline: 2rem;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 .postTitle {
+  font-family: "Gotham Bold", cursive;
+  color: black;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -21,9 +21,24 @@
 .postMeta {
   font-size: 0.9rem;
   color: #777;
+  margin-bottom: 0px;
 }
 .separator {
   margin: 0 0.5rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 1rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  max-width: 1800px;
+}
+
+.contentOne {
+  flex: 1 1 60%;
 }
 
 /* Featured Image */
@@ -32,7 +47,7 @@
 }
 .featuredImage {
   width: 100%;
-  height: 50vh;
+  height: auto;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -41,8 +56,16 @@
 .postContent {
   margin-bottom: 2rem;
 }
+
+.postContent h2 {
+  font-family: "Gotham Medium", cursive;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
 .postContent p {
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 1rem;
   font-size: 1.2rem;
   text-align: justify;
@@ -58,7 +81,8 @@
 }
 .postContent a.linkRegistration,
 .postContent a.linkGuidebook {
-  color: #b91c1c;
+  font-family: "Gotham Medium", cursive;
+  color: #4a0000;
   text-decoration: none;
   font-weight: bold;
 }
@@ -82,12 +106,54 @@
   transition: color 0.2s ease;
 }
 .shareIcon:hover {
-  color: #b91c1c;
+  font-family: "Gotham Medium", cursive;
+  color: #4a0000;
+}
+
+.contentTwo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-left: 5rem;
+  flex: 1 1 15%;
+  align-items: center;
+}
+
+.contentTwo h2 {
+  font-family: "Gotham Bold", cursive;
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.contentTwo button {
+  font-weight: bold;
+  background-color: white;
+  margin-bottom: 1rem;
+  border: none;
+}
+.buttonText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 300px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.contentTwo button:hover {
+  font-family: "Gotham Medium", cursive;
+  color: #4a0000;
+  transition: all 0.3s ease-in-out;
 }
 
 /* Hot Topic News */
 .hotTopicSection {
-  margin-top: 2rem;
+  margin: 2rem auto;
+  max-width: 1800px;
+  padding: 1rem;
 }
 .hotTopicTitle {
   font-size: 1.5rem;
@@ -156,50 +222,4 @@
 }
 .cardButton:hover {
   background-color: #991b1b;
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  padding: 1rem;
-}
-.contentOne {
-  flex: 1 1 50%;
-}
-
-.contentTwo {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-left: 5rem;
-  flex: 1 1 20%;
-  align-items: center;
-}
-
-.contentTwo h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.contentTwo button {
-  font-weight: bold;
-  background-color: white;
-  margin-bottom: 1rem;
-  border: none;
-}
-.buttonText {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: fit-content;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.contentTwo button:hover {
-  color: red;
-  transition: all 0.3s ease-in-out;
 }

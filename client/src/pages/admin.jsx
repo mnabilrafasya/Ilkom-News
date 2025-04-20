@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-function App() {
+function Admin() {
   const [acara, setAcara] = useState([]);
   const [formData, setFormData] = useState({
     tanggal: "",
@@ -119,4 +119,4 @@ function App() {
   );
 }
 
-export default App;
+export default Admin;

@@ -2,7 +2,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/admin";
+import Admin from "./pages/Admin";
 import InfoAkademik from "./pages/InfoAkademik";
 import "./App.css"; // Import CSS file for global styles
 
@@ -18,7 +18,7 @@ function App() {
       {/* Routing: hanya satu komponen ditampilkan berdasarkan path */}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/info-akademik" element={<InfoAkademik />} />
         {/* Tambahkan route lain di sini */}
       </Routes>
