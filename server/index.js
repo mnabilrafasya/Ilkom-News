@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
@@ -5,20 +6,19 @@ const multer = require("multer");
 const path = require("path");
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
-// Menyajikan file statis dari folder uploads
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Konfigurasi koneksi MySQL (sesuaikan user dan password jika perlu)
+// Konfigurasi koneksi MySQL via .env
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "bemilkom_ilkomnews",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
 });
 
 db.connect((err) => {
@@ -32,7 +32,7 @@ db.connect((err) => {
 // Konfigurasi penyimpanan file dengan multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Pastikan folder "uploads" sudah ada
+    cb(null, "uploads/");
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
