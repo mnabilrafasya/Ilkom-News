@@ -1,9 +1,9 @@
 // App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import Admin from "./pages/Admin";
-import InfoAkademik from "./pages/InfoAkademik";
+import HomePage from "./pages/HomePage/HomePage";
+import Admin from "./pages/Admin/Admin";
+import InfoAkademik from "./pages/InfoAkademik/InfoAkademik";
 import "./App.css"; // Import CSS file for global styles
 import ScrollToTop from "./components/ComponentUtama/ScrollToTop";
 
@@ -25,6 +25,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+} 
 
 export default App;

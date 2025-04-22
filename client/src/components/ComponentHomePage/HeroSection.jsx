@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../pages/HomePage.module.css"; 
+import styles from "../../pages//HomePage/HomePage.module.css"; // Import CSS module for styling
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 
 const HeroSection = () => {
@@ -28,7 +28,7 @@ const HeroSection = () => {
       <div className={styles.heroImageContainer}>
         <div className={styles.heroImageWrapper}>
           <img
-            src="https://picsum.photos/400/400?random=1"
+            src="/universitas-sriwijaya.jpg"
             alt="Universitas"
             className={styles.heroImage}
           />

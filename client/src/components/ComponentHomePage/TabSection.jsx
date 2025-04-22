@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../pages/HomePage.module.css";
+import styles from "../../pages//HomePage/HomePage.module.css"; // Import CSS module for styling
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 
 const TabSection = () => {

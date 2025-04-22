@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../pages/InfoAkademik.module.css";
+import styles from "../../pages//InfoAkademik/InfoAkademik.module.css"; // Import CSS module for styling
 
 const Content = () => {
   return (
