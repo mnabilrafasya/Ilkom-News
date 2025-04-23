@@ -1,53 +1,63 @@
-require("dotenv").config();
-const express = require("express");
-const mysql = require("mysql2");
-const cors = require("cors");
-const multer = require("multer");
-const path = require("path");
+import express from "express";
+import cors from "cors";
+import session from "express-session";
+import dotenv from "dotenv";
+import db from "./config/Database.js";
+import SequelizeStore from "connect-session-sequelize";
+import UserRoute from "./routes/UserRoute.js";
+import BeritaRoute from "./routes/BeritaRoute.js";
+import AuthRoute from "./routes/AuthRoute.js";
+import path from "path";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const sessionStore = SequelizeStore(session.Store);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Konfigurasi store session di DB
+const store = new sessionStore({
+  db: db,
+  tableName: 'sessions'
+});
+
+// Untuk membuat tabel baru di db sesuai model yg sudah didefinisikan (karena di db bemilkom_ilkomnews sudah ada, maka jangan diaktifkan)
+// (async()=>{
+//     await db.sync();
+
+// })();
+
+
+// Setup express-session
+app.use(session({
+  secret: process.env.SESS_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  store: store,
+  cookie: {
+      secure: 'auto'
+  }
+}));
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000", "http://localhost:5173"],
+  credentials: true
+}));
 app.use(express.json());
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use(express.urlencoded({ extended: true })); 
+app.use('/public/uploads', express.static(path.join(__dirname + '/public/uploads')));
 
+// Routing
+app.use(UserRoute);
+app.use('/api/v1', BeritaRoute);
+app.use(AuthRoute);
 
-// Konfigurasi penyimpanan file dengan multer
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
+// store.sync();
 
-const upload = multer({ storage });
-
-// Endpoint GET: Mengambil semua data acara
-app.get("/api/acara", (req, res) => {
-  const sql = "SELECT * FROM acara";
-  db.query(sql, (err, results) => {
-    if (err) return res.status(500).send(err);
-    res.json(results);
-  });
-});
-
-// Endpoint POST: Menambahkan data acara baru (dengan file upload)
-app.post("/api/acara", upload.single("image"), (req, res) => {
-  const { tanggal, isi, judul } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : null;
-  const sql =
-    "INSERT INTO acara (tanggal, isi, image, judul) VALUES (?, ?, ?, ?)";
-  db.query(sql, [tanggal, isi, image, judul], (err, result) => {
-    if (err) return res.status(500).send(err);
-    res.json({ id: result.insertId, tanggal, isi, image, judul });
-  });
-});
-
-// Jalankan server
-app.listen(port, () => {
-  console.log(`Server berjalan di http://localhost:${port}`);
+// Start server
+app.listen(process.env.APP_PORT, ()=> {
+  console.log('Server up and running')
 });
