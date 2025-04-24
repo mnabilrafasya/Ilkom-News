@@ -34,7 +34,9 @@ const FormEditBerita = () => {
       try {
 
         // Mengambil data berita dari API berdasarkan ID
-        const response = await axios.get(`http://localhost:5000/api/v1/berita/${id}`);
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/v1/berita/${id}`
+        );
         const data = response.data;
 
         // Mengisi form dengan data yang didapatkan
@@ -52,8 +54,10 @@ const FormEditBerita = () => {
       if (data.foto) {
         // Simpan nama file dan URL lengkap
         setFoto({
-          name: data.foto.includes('/') ? data.foto.split('/').pop() : data.foto,
-          url: `http://localhost:5000/uploads/${data.foto}`
+          name: data.foto.includes("/")
+            ? data.foto.split("/").pop()
+            : data.foto,
+          url: `${import.meta.env.VITE_API_URL}/uploads/${data.foto}`,
         });
       }
       } catch (error) {
@@ -85,11 +89,15 @@ const FormEditBerita = () => {
       }
       
       // Kirim data ke API
-      await axios.patch(`http://localhost:5000/api/v1/berita/${id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      await axios.patch(
+        `${import.meta.env.VITE_API_URL}/api/v1/berita/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      });
+      );
       // Redirect setelah update berhasil
       navigate("/admin/form-ilkom");
 

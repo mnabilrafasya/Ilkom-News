@@ -20,7 +20,9 @@ const FormEdituser = () => {
       try {
 
         // Ambil data user berdasarkan ID
-        const response = await axios.get(`http://localhost:5000/users/${id}`);
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/users/${id}`
+        );
         setName(response.data.name);
         setEmail(response.data.email);
       } catch (error) {
@@ -38,7 +40,7 @@ const FormEdituser = () => {
     try {
 
       // Kirim data form ke backend 
-      await axios.patch(`http://localhost:5000/users/${id}`, {
+      await axios.patch(`${import.meta.env.VITE_API_URL}/users/${id}`, {
         name: name,
         email: email,
         password: password,
