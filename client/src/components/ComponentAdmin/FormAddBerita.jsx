@@ -43,7 +43,7 @@ const FormAddBerita = () => {
       
       // Kirim data ke backend
       await axios.post(
-        "${import.meta.env.VITE_API_URL}/api/v1/berita",
+        `${import.meta.env.VITE_API_URL}/api/v1/berita`,
         formData,
         {
           headers: {

@@ -12,13 +12,13 @@ export const Userlist = () => {
 
    // Ambil data user dari API
   const getUsers = async () =>{
-    const response = await axios.get("http://localhost:5000/users");
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
     setUsers(response.data);
   };
 
   // Menghapus pengguna berdasarkan userId
   // const deleteUser = async (userId) => {
-  //   await axios.delete(`http://localhost:5000/users/${userId}`);
+  //   await axios.delete(`${import.meta.env.VITE_API_URL}/userId`);
   //   getUsers();
   // };
 

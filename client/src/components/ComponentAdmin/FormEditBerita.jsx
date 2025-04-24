@@ -86,7 +86,10 @@ const FormEditBerita = () => {
         formData.append('foto', foto);
       } else if (foto === null) {
         formData.append('removeFoto', 'true');
+      } else if (typeof foto === 'object' && foto.name) {
+        formData.append('keepFoto', foto.name);
       }
+      
       
       // Kirim data ke API
       await axios.patch(

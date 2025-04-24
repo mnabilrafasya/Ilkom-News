@@ -13,7 +13,7 @@ const Beritalist = () => {
    // Fungsi untuk ambil data berita dari API
   const getBerita = async () =>{
     const response = await axios.get(
-      "${import.meta.env.VITE_API_URL}/api/v1/berita"
+      `${import.meta.env.VITE_API_URL}/api/v1/berita`
     );
     setBerita(response.data);
   };
