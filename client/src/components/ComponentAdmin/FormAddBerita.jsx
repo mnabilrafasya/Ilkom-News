@@ -42,11 +42,15 @@ const FormAddBerita = () => {
       }
       
       // Kirim data ke backend
-      await axios.post('http://localhost:5000/api/v1/berita', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/berita`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      });
+      );
 
       // Redirect setelah berhasil kirim data
       navigate("/admin/form-ilkom");
