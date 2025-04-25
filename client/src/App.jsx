@@ -19,9 +19,9 @@ import {
 } from "lucide-react";
 
 // Homepage Components
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages//HomePage/HomePage";
 // import Admin from "./pages/Admin";
-import InfoAkademik from "./pages/InfoAkademik";
+import InfoAkademik from "./pages/InfoAkademik/InfoAkademik";
 import "./App.css"; // Import CSS file for global styles
 import ScrollToTop from "./components/ComponentUtama/ScrollToTop";
 

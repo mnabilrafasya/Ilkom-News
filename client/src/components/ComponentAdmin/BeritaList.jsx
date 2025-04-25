@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Beritalist = () => {
   const [berita, setBerita] = useState([]);
 
   // useEffect untuk memanggil getBerita saat komponen pertama kali dimuat
-  useEffect(()=>{
+  useEffect(() => {
     getBerita();
   }, []);
 
-   // Fungsi untuk ambil data berita dari API
-  const getBerita = async () =>{
+  // Fungsi untuk ambil data berita dari API
+  const getBerita = async () => {
     const response = await axios.get(
       `${import.meta.env.VITE_API_URL}/api/v1/berita`
     );
     setBerita(response.data);
   };
 
-   // Fungsi untuk menghapus berita berdasarkan beritaId
+  // Fungsi untuk menghapus berita berdasarkan beritaId
   const deleteBerita = async (beritaId) => {
     await axios.delete(
       `${import.meta.env.VITE_API_URL}/api/v1/berita/${beritaId}`
@@ -44,6 +44,7 @@ const Beritalist = () => {
           <thead className="bg-gray-50 text-gray-800 font-normal">
             <tr>
               <th className="w-16 p-4 text-left font-medium">No</th>
+              <th className="w-1/4 p-4 text-left font-medium">Kategori</th>
               <th className="w-1/4 p-4 text-left font-medium">Title</th>
               <th className="w-1/6 p-4 text-left font-medium">Date</th>
               <th className="w-1/3 p-4 text-left font-medium">Content</th>
@@ -55,6 +56,9 @@ const Beritalist = () => {
             {berita.map((berita, index) => (
               <tr key={berita.uuid}>
                 <td className="p-4 text-gray-800 text-left">{index + 1}</td>
+                <td className="p-4 text-gray-800 text-left">
+                  {berita.category?.nama}
+                </td>
                 <td className="p-4 text-gray-800 text-left">{berita.judul}</td>
                 <td className="p-4 text-gray-800 text-left">
                   {(() => {
@@ -83,9 +87,7 @@ const Beritalist = () => {
                   {berita.foto ? (
                     <div className="flex items-center">
                       <img
-                        src={`${import.meta.env.VITE_API_URL}/uploads/${
-                          berita.foto
-                        }`}
+                        src={berita.foto}
                         // alt={berita.judul}
                         className="w-5 h-5 object-cover rounded-md mr-2"
                       />

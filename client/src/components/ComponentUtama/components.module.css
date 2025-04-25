@@ -191,6 +191,7 @@
   font-size: 2rem;
   color: #030303;
   text-align: center;
+  margin-bottom: 24px;
 }
 
 .hotNewsGrid {
@@ -204,6 +205,8 @@
   border-radius: 8px;
   box-shadow: 0 0 6px rgba(180, 188, 201, 0.5);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .hotNewsImage {
@@ -214,6 +217,9 @@
 
 .hotNewsContent {
   padding: 16px;
+  flex: 1;                 /* isi ruang kosong dalam card */
+  display: flex;
+  flex-direction: column;  /* atur konten secara vertikal */
 }
 
 .hotNewsDate {
@@ -234,9 +240,21 @@
   font-size: 1rem;
   color: #555;
   margin-bottom: 12px;
+  overflow: hidden;
+  flex-wrap: wrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* jumlah baris yang ditampilkan */
+  line-clamp: 3; /* jumlah baris yang ditampilkan */
+  white-space: normal;           /* pastikan wrap */
+  overflow-wrap: break-word;     /* wrap “long-words” */
+  word-break: break-all;         /* alternatif kalau butuh */
 }
 
 .hotNewsButton {
+  display: inline-block;
+  align-self: flex-start;
   font-family: "Gotham Book", cursive;
   background-color: #fff;
   color: #4a0000;
@@ -245,6 +263,8 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  margin-top: auto;        /* dorong button ke paling bawah .hotNewsContent */
+
 }
 
 .hotNewsButton:hover {
