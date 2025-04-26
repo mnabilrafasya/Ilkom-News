@@ -1,84 +1,96 @@
-import React from "react";
-import styles from "../../pages/HomePage.module.css";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+// TabSection.jsx
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import styles from "../../pages/HomePage/HomePage.module.css";
 
-const TabSection = () => {
-  const navigate = useNavigate(); // Initialize useNavigate hook
+const categories = [
+  { label: "Seputar Ilkom", slug: "seputar-ilkom" },
+  { label: "Info Akademik", slug: "akademik" },
+  { label: "Info Non-Akademik", slug: "non-akademik" },
+];
+
+const TabSection = ({ initialCategory }) => {
+  const navigate = useNavigate();
+  const [activeCategory, setActiveCategory] = useState(initialCategory ?? null);;
+  const [beritas, setBeritas] = useState([]);
+
+  useEffect(() => {
+    setActiveCategory(initialCategory ?? null);
+  }, [initialCategory]);
+
+  useEffect(() => {
+    const fetchBerita = async () => {
+      try {
+        const baseUrl = import.meta.env.VITE_API_URL;
+        let res;
+
+        if (!activeCategory) {
+          // random
+          res = await axios.get(`${baseUrl}/api/v1/berita/random?limit=4`);
+        } else {
+          // per kategori
+          res = await axios.get(
+            `${baseUrl}/api/v1/berita/kategori/${activeCategory}`
+          );
+        }
+
+        setBeritas(res.data);
+      } catch (err) {
+        console.error("Gagal memuat berita:", err);
+      }
+    };
+    fetchBerita();
+  }, [activeCategory]);
 
   return (
-    <section className={styles.tabSection}>
+    <section id="tabSection" className={styles.tabSection}>
       <h2 className={styles.sectionTitle}>What You Need</h2>
+
+      {/* Tab Buttons */}
       <div className={styles.tabMenu}>
-        <button
-          onClick={() => navigate("/info-akademik")}
-          className={styles.tabButton}
-        >
-          Seputar Ilkom
-        </button>
-        <button
-          onClick={() => navigate("/info-akademik")}
-          className={styles.tabButton}
-        >
-          Info Akademik
-        </button>
-        <button
-          onClick={() => navigate("/info-akademik")}
-          className={styles.tabButton}
-        >
-          Info Non-Akademik
-        </button>
+        {categories.map((cat) => (
+          <button
+            key={cat.slug}
+            onClick={() => setActiveCategory(cat.slug)}
+            className={`${styles.tabButton} ${
+              activeCategory === cat.slug ? styles.active : ""
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
       </div>
 
+      {/* Cards Container */}
       <div className={styles.cardContainer}>
-        <div className={styles.card}>
-          <img
-            src="https://picsum.photos/300/200?random=2"
-            alt="Berita 1"
-            className={styles.cardImage}
-          />
-          <div className={styles.cardContent}>
-            <div className={styles.cardDate}>18 Maret 2025</div>
-            <h3 className={styles.cardTitle}>
-              Unsri Gelar Konferensi Pers terkait Hasil SNBP
-            </h3>
-            <p className={styles.cardText}>
-              Unsri Gelar Konferensi Pers terkait hasil Seleksi Nasional
-              Berdasarkan Prestasi (SNBP) Tahun 2025 Universitas Sriwijaya...
-            </p>
-            <button
-              onClick={() => navigate("/info-akademik")}
-              className={styles.cardButton}
-            >
-              Read More
-            </button>
+        {beritas.map((b) => (
+          <div key={b.uuid} className={styles.card}>
+            <img src={b.foto} alt={b.judul} className={styles.cardImage} />
+            <div className={styles.cardContent}>
+              <h3 className={styles.cardTitle}>{b.judul}</h3>
+              <div className={styles.cardDate}>
+                {new Date(b.tanggal).toLocaleDateString("id-ID", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </div>
+              <p className={styles.cardText}>{b.isi.replace(/<[^>]+>/g, "")}</p>
+              <button
+                onClick={() =>
+                  navigate(`/info-akademik/${activeCategory}/${b.uuid}`)
+                }
+                className={styles.cardButton}
+              >
+                Read More
+              </button>
+            </div>
           </div>
-        </div>
-
-        <div className={styles.card}>
-          <img
-            src="https://picsum.photos/300/200?random=3"
-            alt="Berita 2"
-            className={styles.cardImage}
-          />
-          <div className={styles.cardContent}>
-            <div className={styles.cardDate}>18 Maret 2025</div>
-            <h3 className={styles.cardTitle}>
-              Unsri Gelar Konferensi Pers terkait Hasil SNBP
-            </h3>
-            <p className={styles.cardText}>
-              Unsri Gelar Konferensi Pers terkait hasil Seleksi Nasional
-              Berdasarkan Prestasi (SNBP) Tahun 2025 Universitas Sriwijaya...
-            </p>
-            <button
-              onClick={() => navigate("/info-akademik")}
-              className={styles.cardButton}
-            >
-              Read More
-            </button>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
 };
+
 export default TabSection;

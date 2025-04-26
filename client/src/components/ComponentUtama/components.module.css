@@ -1,12 +1,28 @@
 /* navbar */
 .navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbarInner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
-  background-color: #fff;
-  max-width: 1700px;
-  margin: 0 auto;
+}
+
+@media (min-width: 2000px) {
+  .navbarInner {
+    max-width: 1700px;
+  }
+  
 }
 
 .navbarLogo {
@@ -25,8 +41,8 @@
 }
 
 .logoImage {
-  width: 60px;
-  height: 60px;
+  width: 75px;
+  height: 75px;
   object-fit: contain;
 }
 
@@ -44,7 +60,7 @@
 .navbarMenu {
   list-style: none;
   display: flex;
-  gap: 16px;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
@@ -173,7 +189,7 @@
 .hotNewsSection {
   padding: 40px 24px;
   background-color: #fff;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
@@ -182,6 +198,7 @@
   font-size: 2rem;
   color: #030303;
   text-align: center;
+  margin-bottom: 24px;
 }
 
 .hotNewsGrid {
@@ -195,16 +212,21 @@
   border-radius: 8px;
   box-shadow: 0 0 6px rgba(180, 188, 201, 0.5);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .hotNewsImage {
   width: 100%;
-  height: 160px;
+  height: 210px;
   object-fit: cover;
 }
 
 .hotNewsContent {
   padding: 16px;
+  flex: 1;                 /* isi ruang kosong dalam card */
+  display: flex;
+  flex-direction: column;  /* atur konten secara vertikal */
 }
 
 .hotNewsDate {
@@ -225,9 +247,21 @@
   font-size: 1rem;
   color: #555;
   margin-bottom: 12px;
+  overflow: hidden;
+  flex-wrap: wrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* jumlah baris yang ditampilkan */
+  line-clamp: 3; /* jumlah baris yang ditampilkan */
+  white-space: normal;           /* pastikan wrap */
+  overflow-wrap: break-word;     /* wrap “long-words” */
+  word-break: break-all;         /* alternatif kalau butuh */
 }
 
 .hotNewsButton {
+  display: inline-block;
+  align-self: flex-start;
   font-family: "Gotham Book", cursive;
   background-color: #fff;
   color: #4a0000;
@@ -236,6 +270,8 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  margin-top: auto;        /* dorong button ke paling bawah .hotNewsContent */
+
 }
 
 .hotNewsButton:hover {

@@ -1,0 +1,137 @@
+.container {
+  font-family: "Gotham Book", cursive;
+  color: #333;
+  background-color: #fff;
+  min-height: 100vh;
+  padding-top: 1rem;
+}
+
+.title {
+  font-family: "Gotham Bold", cursive;
+  font-size: 2rem;
+  color: #030303;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  font-family: "Gotham Bold", cursive;
+  font-size: 1.5rem;
+  color: #030303;
+  margin: 2rem 0 1rem;
+  text-align: center;
+}
+
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-family: "Gotham Medium", cursive;
+  margin-bottom: 0.5rem;
+  color: #4a0000;
+}
+
+.input,
+.textarea,
+.fileInput {
+  font-family: "Gotham Book", cursive;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.fileInput {
+  padding: 0.25rem;
+}
+
+.submitButton {
+  display: block;
+  width: 100%;
+  background-color: #4a0000;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Gotham Book", cursive;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: #fff;
+  color: #4a0000;
+  border: 1px solid #4a0000;
+}
+
+.eventList {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.eventItem {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.eventDetails {
+  flex: 2 1 300px;
+  padding: 1rem;
+}
+
+.eventTitle {
+  font-family: "Gotham Bold", cursive;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.eventDate {
+  font-family: "Gotham Medium", cursive;
+  font-size: 0.875rem;
+  color: #4a0000;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.eventText {
+  font-family: "Gotham Book", cursive;
+  font-size: 1rem;
+  color: #555;
+}
+
+.eventImage {
+  flex: 1 1 200px;
+  object-fit: cover;
+  width: 100%;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .eventItem {
+    flex-direction: column;
+  }
+}

@@ -19,10 +19,11 @@ import {
 } from "lucide-react";
 
 // Homepage Components
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages//HomePage/HomePage";
 // import Admin from "./pages/Admin";
-import InfoAkademik from "./pages/InfoAkademik";
+import InfoAkademik from "./pages/InfoAkademik/InfoAkademik";
 import "./App.css"; // Import CSS file for global styles
+import ScrollToTop from "./components/ComponentUtama/ScrollToTop";
 
 
 function App() {
@@ -33,12 +34,12 @@ function App() {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
       </nav> */}
-
+      <ScrollToTop /> {/* Komponen untuk scroll ke atas saat navigasi */}
       {/* Routing: hanya satu komponen ditampilkan berdasarkan path */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         {/* <Route path="/admin" element={<Admin />} /> */}
-        <Route path="/info-akademik" element={<InfoAkademik />} />
+        <Route path="/info-akademik/:category/:uuid" element={<InfoAkademik />} />
 
         {/* Route untuk page login Dashboard*/}
         <Route path="/admin" element={<Login />} />
@@ -56,7 +57,7 @@ function App() {
       </Routes>
     </Router>
   );
-}
+} 
 
 // Komponen layout untuk page admin 
 const AdminLayout = () => {

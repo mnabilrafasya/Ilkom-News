@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import Navbar from "../../components/ComponentUtama/Navbar";
+import Footer from "../../components/ComponentUtama/Footer";
+import styles from "./Admin.module.css";
 
 function Admin() {
   const [acara, setAcara] = useState([]);
@@ -48,73 +50,95 @@ function Admin() {
       .post("/api/acara", data)
       .then((response) => {
         setAcara((prev) => [...prev, response.data]);
-        setFormData({
-          tanggal: "",
-          isi: "",
-          judul: "",
-          image: null,
-        });
+        setFormData({ tanggal: "", isi: "", judul: "", image: null });
       })
       .catch((error) => console.error("Error adding event:", error));
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Informasi Acara</h1>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div>
-          <label>Tanggal: </label>
+    <div className={styles.container}>
+      <Navbar />
+
+      <h1 className={styles.title}>Informasi Acara</h1>
+
+      <form
+        onSubmit={handleSubmit}
+        className={styles.form}
+        encType="multipart/form-data"
+      >
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Tanggal:</label>
           <input
             type="date"
             name="tanggal"
             value={formData.tanggal}
             onChange={handleChange}
             required
+            className={styles.input}
           />
         </div>
-        <div>
-          <label>Judul: </label>
+
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Judul:</label>
           <input
             type="text"
             name="judul"
             value={formData.judul}
             onChange={handleChange}
             required
+            className={styles.input}
           />
         </div>
-        <div>
-          <label>Isi: </label>
+
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Isi:</label>
           <textarea
             name="isi"
             value={formData.isi}
             onChange={handleChange}
             required
-          ></textarea>
+            className={styles.textarea}
+          />
         </div>
-        <div>
-          <label>Image: </label>
-          <input type="file" name="image" onChange={handleFileChange} />
+
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Image:</label>
+          <input
+            type="file"
+            name="image"
+            onChange={handleFileChange}
+            className={styles.fileInput}
+          />
         </div>
-        <button type="submit">Tambah Acara</button>
+
+        <button type="submit" className={styles.submitButton}>
+          Tambah Acara
+        </button>
       </form>
-      <h2>Daftar Acara</h2>
-      <ul>
+
+      <h2 className={styles.subtitle}>Daftar Acara</h2>
+      <ul className={styles.eventList}>
         {acara.map((item) => (
-          <li key={item.id} style={{ marginBottom: "20px" }}>
-            <strong>{item.judul}</strong> -{" "}
-            {new Date(item.tanggal).toLocaleDateString()}
-            <br />
-            <p>{item.isi}</p>
+          <li key={item.id} className={styles.eventItem}>
+            <div className={styles.eventDetails}>
+              <h3 className={styles.eventTitle}>{item.judul}</h3>
+              <span className={styles.eventDate}>
+                {new Date(item.tanggal).toLocaleDateString()}
+              </span>
+              <p className={styles.eventText}>{item.isi}</p>
+            </div>
             {item.image && (
               <img
                 src={`http://localhost:5000${item.image}`}
                 alt={item.judul}
-                style={{ maxWidth: "300px" }}
+                className={styles.eventImage}
               />
             )}
           </li>
         ))}
       </ul>
+
+      <Footer />
     </div>
   );
 }
