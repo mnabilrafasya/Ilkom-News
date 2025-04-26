@@ -53,7 +53,7 @@ const HotNewsCard = () => {
                 {item.isi.replace(/<[^>]+>/g, "")}
               </p>
               <button
-                onClick={() => navigate(`/berita/${item.uuid}`)}
+                onClick={() => navigate(`/info-akademik/all/${item.uuid}`)}
                 className={styles.hotNewsButton}
               >
                 Read More

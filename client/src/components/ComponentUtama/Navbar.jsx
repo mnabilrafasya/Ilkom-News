@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className={styles.navbarInner}>
       <div className={styles.navbarLogo}>
         <img
-          src="logoBEM.png"
+          src="/logoBEM.png"
           alt="Logo Artha Darma"
           className={styles.logoImage}
         />

@@ -3,7 +3,11 @@ import styles from "../../pages//HomePage/HomePage.module.css"; // Import CSS mo
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 
 const HeroSection = () => {
-  const navigate = useNavigate(); // Create a navigate function
+  // CHANGED: tambah fungsi scrollToTab untuk scroll ke TabSection
+  const scrollToTab = () => {
+    const el = document.getElementById('tabSection');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
   
   return (
     <header className={styles.heroSection}>
@@ -22,7 +26,9 @@ const HeroSection = () => {
           fakultas, informasi beasiswa, info lomba, dan berbagai informasi
           menarik lainnya. Mereka ketinggalan, kamu jangan.
         </p>
-        <button onClick={() => navigate("/info-akademik")} className={styles.heroButton}>Read More</button>
+        <button onClick={scrollToTab} className={styles.heroButton}>
+          Read More
+        </button>
       </div>
 
       <div className={styles.heroImageContainer}>

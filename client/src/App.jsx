@@ -39,7 +39,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         {/* <Route path="/admin" element={<Admin />} /> */}
-        <Route path="/info-akademik" element={<InfoAkademik />} />
+        <Route path="/info-akademik/:category/:uuid" element={<InfoAkademik />} />
 
         {/* Route untuk page login Dashboard*/}
         <Route path="/admin" element={<Login />} />

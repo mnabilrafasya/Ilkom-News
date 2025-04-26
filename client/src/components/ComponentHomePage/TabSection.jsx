@@ -1,3 +1,4 @@
+// TabSection.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,19 +10,31 @@ const categories = [
   { label: "Info Non-Akademik", slug: "non-akademik" },
 ];
 
-const TabSection = () => {
+const TabSection = ({ initialCategory }) => {
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState(categories[0].slug);
+  const [activeCategory, setActiveCategory] = useState(initialCategory ?? null);;
   const [beritas, setBeritas] = useState([]);
+
+  useEffect(() => {
+    setActiveCategory(initialCategory ?? null);
+  }, [initialCategory]);
 
   useEffect(() => {
     const fetchBerita = async () => {
       try {
-        const res = await axios.get(
-          `${
-            import.meta.env.VITE_API_URL
-          }/api/v1/berita/kategori/${activeCategory}`
-        );
+        const baseUrl = import.meta.env.VITE_API_URL;
+        let res;
+
+        if (!activeCategory) {
+          // random
+          res = await axios.get(`${baseUrl}/api/v1/berita/random?limit=4`);
+        } else {
+          // per kategori
+          res = await axios.get(
+            `${baseUrl}/api/v1/berita/kategori/${activeCategory}`
+          );
+        }
+
         setBeritas(res.data);
       } catch (err) {
         console.error("Gagal memuat berita:", err);
@@ -31,7 +44,7 @@ const TabSection = () => {
   }, [activeCategory]);
 
   return (
-    <section className={styles.tabSection}>
+    <section id="tabSection" className={styles.tabSection}>
       <h2 className={styles.sectionTitle}>What You Need</h2>
 
       {/* Tab Buttons */}
