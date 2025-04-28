@@ -31,7 +31,7 @@ const HotNewsCard = () => {
 
   return (
     <section className={styles.hotNewsSection}>
-      <h2 className={styles.sectionTitle}>Hot Topic News</h2>
+      <h2 className={styles.sectionTitle}>Berita Lainnya</h2>
       <div className={styles.hotNewsGrid}>
         {news.map((item) => (
           <div key={item.uuid} className={styles.hotNewsCard}>
