@@ -287,57 +287,119 @@
   color: #fff;
 }
 
-/* Media Queries untuk Responsivitas */
-@media (max-width: 768px) {
-  .body {
-    margin-inline: 1rem;
-  }
+/* --------------------------------------------- */
+/* Base styles (mobile-first)                    */
+/* --------------------------------------------- */
+/* Semua style dasar Anda tetap di atas */
 
-  .navbar {
+/* --------------------------------------------- */
+/* Small devices (up to 480px)                   */
+/* --------------------------------------------- */
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 1.75rem; /* scale down */
+  }
+  .heroSubtitle {
+    font-size: 0.9rem;
+    margin-right: 0;
+  }
+  .heroImageWrapper {
+    width: 300px;
+    height: 300px;
+  }
+  .card {
     flex-direction: column;
-    padding: 16px;
+    height: auto;
   }
-
-  .heroSection {
-    flex-direction: column;
-    padding: 30px 5%;
-  }
-
-  .heroText {
-    flex: 1 1 100%;
-    text-align: center;
-    align-items: center;
-  }
-
-  .heroImageContainer {
-    flex: 1 1 100%;
-    margin-top: 20px;
-  }
-
-  .tabMenu {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cardContainer {
-    flex-direction: column;
-    align-items: center;
+  .cardImage {
+    width: 100%;
+    height: auto;
   }
 }
 
-/* Media Queries untuk layar sangat kecil */
-@media (max-width: 480px) {
-  .heroTitle {
-    font-size: 2rem;
+/* --------------------------------------------- */
+/* Medium devices (481px – 768px)                */
+/* --------------------------------------------- */
+@media (min-width: 481px) and (max-width: 768px) {
+  .heroSection {
+    padding: 40px 5%;
   }
-
-  .navbarMenu {
+  
+  .heroText {
+    margin-left: 0;
+    text-align: center;
+    align-items: center;
+  }
+  .heroImageWrapper {
+    width: 350px;
+    height: 350px;
+  }
+  .card {
     flex-direction: column;
+    height: auto;
+  }
+  .cardImage {
+    width: 100%;
+    height: auto;
+  }
+  .tabMenu {
+    flex-wrap: wrap;
     gap: 8px;
   }
+}
 
-  .footerContent {
-    flex-direction: column;
-    align-items: center;
+/* --------------------------------------------- */
+/* Large devices (769px – 1024px)                */
+/* --------------------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .heroSection {
+    flex-direction: row;
+    padding: 50px 5%;
+  }
+  .heroText {
+    flex: 1 1 60%;
+    margin-left: 20px;
+  }
+  .heroImageWrapper {
+    width: 400px;
+    height: 400px;
+  }
+  .card {
+    flex-direction: row;
+    height: 280px;
+  }
+  .cardImage {
+    flex: 0 0 35%;
+    width: auto;
+  }
+}
+
+/* --------------------------------------------- */
+/* Extra large devices (1025px – 1280px)         */
+/* --------------------------------------------- */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .heroSection {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .heroImageWrapper {
+    width: 450px;
+    height: 450px;
+  }
+  .card {
+    height: 300px;
+  }
+}
+
+/* --------------------------------------------- */
+/* Ultra large devices (above 1280px)            */
+/* --------------------------------------------- */
+@media (min-width: 1281px) {
+  .heroSection {
+    max-width: 1400px;
+  }
+  .heroImageWrapper {
+    width: 500px;
+    height: 500px;
   }
 }

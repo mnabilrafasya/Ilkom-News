@@ -1,8 +1,16 @@
 // src/components/Navbar.js
 import React from "react";
+import { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
 import styles from "./components.module.css";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarInner}>
@@ -21,7 +29,20 @@ const Navbar = () => {
             BEM KM FASILKOM UNSRI
           </div>
         </div>
-        <ul className={styles.navbarMenu}>
+
+        {/* Hamburger button for mobile */}
+        <button
+          className={styles.hamburger}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        </button>
+        <ul
+          className={
+            isOpen ? `${styles.navbarMenu} ${styles.open}` : styles.navbarMenu
+          }
+        >
           <li>
             <a href="/" className={styles.navbarLink}>
               Home
