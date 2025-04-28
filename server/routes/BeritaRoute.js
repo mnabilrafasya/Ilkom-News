@@ -1,26 +1,45 @@
+// routes/BeritaRoute.js
 import express from "express";
-import {
-    getRandomBerita,
-    getBerita,
-    getBeritaById,
-    getBeritaByCategory,
-    createBerita,
-    deleteBerita,
-    updateBerita
-} from '../controllers/Berita.js';
-import { verifyUser } from "../middleware/AuthUser.js";
 import multer from "multer";
-import { uploadOption } from "../utils/FileUpload.js";
 
+import {
+  getBerita,
+  getBeritaById,
+  getRandomBerita,
+  getBeritaByCategory,
+  createBerita,
+  updateBerita,
+  deleteBerita,
+} from "../controllers/Berita.js";
+
+import { verifyUser, adminOnly } from "../middleware/AuthUser.js";
 
 const router = express.Router();
-  
-router.get('/berita/random', verifyUser, getRandomBerita);
-router.get('/berita', verifyUser, getBerita);
-router.get('/berita/:id',verifyUser, getBeritaById);
-router.get('/berita/kategori/:slug',verifyUser, getBeritaByCategory);
-router.post('/berita',verifyUser, uploadOption.single('foto'),createBerita);
-router.delete('/berita/:id',verifyUser, deleteBerita);
-router.patch('/berita/:id',verifyUser, uploadOption.single('foto'),updateBerita);
+const upload = multer({ dest: "public/uploads/" });
+
+// —–––– Public GET routes (spesifik dulu) —––––
+router.get("/berita/random", getRandomBerita);
+router.get("/berita/kategori/:slug", getBeritaByCategory);
+router.get("/berita/:id", getBeritaById);
+router.get("/berita", getBerita);
+
+// —–––– Protected Admin routes —––––
+router.post(
+  "/berita",
+  verifyUser,
+  adminOnly,
+  upload.single("foto"),
+  createBerita
+);
+
+router.patch(
+  "/berita/:id",
+  verifyUser,
+  adminOnly,
+  upload.single("foto"),
+  updateBerita
+);
+
+router.delete("/berita/:id", verifyUser, adminOnly, deleteBerita);
 
 export default router;

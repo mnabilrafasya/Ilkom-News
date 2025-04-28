@@ -57,9 +57,10 @@ app.use(
   express.static(path.join(__dirname + "/public/uploads"))
 );
 
+app.use("/api/v1", BeritaRoute);
+
 // Routing
 app.use("/api/v1/users", UserRoute);
-app.use("/api/v1", BeritaRoute);
 app.use(AuthRoute);
 app.use("/api/v1", CategoryRoute);
 
