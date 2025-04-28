@@ -236,3 +236,94 @@
 .cardButton:hover {
   background-color: #991b1b;
 }
+
+/* Tablet & small desktop (≤1024px) */
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  .contentOne,
+  .contentTwo {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .contentTwo {
+    margin-left: 0;
+    align-items: flex-start;
+  }
+  .postTitle {
+    font-size: 1.75rem;
+  }
+  .postMeta {
+    font-size: 0.85rem;
+  }
+  .categoryButton {
+    width: 100%;
+  }
+}
+
+/* Mobile landscape & large phones (≤768px) */
+@media (max-width: 768px) {
+  .infoAkademikContainer {
+    padding: 0.5rem 0.75rem;
+  }
+  .postTitle {
+    font-size: 1.5rem;
+  }
+  .postMeta {
+    font-size: 0.8rem;
+  }
+  .content {
+    padding: 0.5rem;
+  }
+  .featuredImage {
+    max-width: 100%;
+  }
+  .contentTwo h2 {
+    align-self: center;
+    font-size: 1.5rem;
+  }
+  .categoryButton {
+    font-size: 1rem; display: flex; /* make it a flex container */
+    justify-content: space-between;
+    align-self: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hotTopicGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+/* Mobile portrait (≤480px) */
+@media (max-width: 480px) {
+  .postTitle {
+    font-size: 1.25rem;
+  }
+  .postMeta {
+    font-size: 0.75rem;
+  }
+  .content {
+    gap: 1rem;
+  }
+  .contentOne,
+  .contentTwo {
+    width: 100%;
+  }
+  .contentTwo {
+    margin: 0;
+  }
+  .postContent p,
+  .postContent ul li {
+    font-size: 1rem;
+  }
+  .hotTopicGrid {
+    grid-template-columns: 1fr;
+  }
+  .hotTopicTitle {
+    font-size: 1.25rem;
+  }
+}

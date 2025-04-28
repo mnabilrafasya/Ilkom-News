@@ -56,6 +56,14 @@
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
+/* Hamburger icon button */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
 
 .navbarMenu {
   list-style: none;
@@ -277,4 +285,210 @@
 .hotNewsButton:hover {
   background-color: #4a0000;
   color: #fff;
+}
+
+
+/* ============================================= */
+/*       Media Query untuk Navbar, Footer,       */
+/*           dan Hot News Section               */
+/* ============================================= */
+
+/* --------------------------------------------- */
+/* Small devices (max-width: 480px)             */
+/* --------------------------------------------- */
+@media (max-width: 480px) {
+
+  /* Navbar: logo dan menu jadi center, menu vertical */
+  .navbarInner {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+  .navbarLogo {
+    margin-left: 0;
+  }
+  .navbarMenu {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+  }
+
+  /* Footer: semua kolom stack, text-center */
+  .footerContent {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .footerInfo, .footerContact, .footerNav {
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Hot News: satu kolom */
+  .hotNewsGrid {
+    grid-template-columns: 1fr;
+  }
+  .hotNewsImage {
+    height: 180px;
+  }
+}
+
+/* --------------------------------------------- */
+/* Medium devices (481px – 768px)                */
+/* --------------------------------------------- */
+@media (min-width: 481px) and (max-width: 768px) {
+
+  /* Navbar: logo mengecil, menu 2 kolom jika banyak */
+  .navbarLogo .logoImage {
+    width: 60px;
+    height: 60px;
+  }
+  .navbarMenu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  /* Footer: dua kolom jika memungkinkan */
+  .footerContent {
+    justify-content: center;
+  }
+  .footerInfo, .footerContact, .footerNav {
+    min-width: 180px;
+  }
+
+  /* Hot News: dua kolom */
+  .hotNewsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hotNewsImage {
+    height: 200px;
+  }
+}
+
+/* --------------------------------------------- */
+/* Large devices (769px – 1024px)                */
+/* --------------------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  /* Navbar: kembali row, tapi padding dikurangi */
+  .navbarInner {
+    flex-direction: row;
+    padding: 14px 24px;
+  }
+  .navbarLogo .logoImage {
+    width: 70px;
+    height: 70px;
+  }
+  .navbarMenu {
+    gap: 24px;
+  }
+
+  /* Footer: tiga kolom, margin samping dikurangi */
+  .footerContent {
+    justify-content: space-around;
+  }
+  .footerInfo {
+    margin-left: 2rem;
+  }
+  .footerNav {
+    margin-right: 2rem;
+  }
+
+  /* Hot News: tiga kolom */
+  .hotNewsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .hotNewsImage {
+    height: 220px;
+  }
+}
+
+/* --------------------------------------------- */
+/* Extra large devices (1025px – 1280px)         */
+/* --------------------------------------------- */
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+  /* Navbar: center content, max-width tetap */
+  .navbarInner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Footer: gunakan max-width agar tidak melebar */
+  .footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Hot News: kembali grid auto-fit */
+  .hotNewsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .hotNewsImage {
+    height: 240px;
+  }
+}
+
+/* --------------------------------------------- */
+/* Ultra large devices (min-width: 1281px)       */
+/* --------------------------------------------- */
+@media (min-width: 1281px) {
+
+  .navbarInner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .footerContent {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .hotNewsGrid {
+    gap: 32px;
+  }
+  .hotNewsImage {
+    height: 260px;
+  }
+}
+
+/* Mobile: hide menu by default and show hamburger */
+@media (max-width: 768px) {
+  .navbarInner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .hamburger {
+    display: block;
+    margin-left: auto;
+  }
+  .navbarLogo {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  .logoImage {
+    width: 50px;
+    height: 50px;
+  }
+  .navbarText {
+    font-size: 0.9rem;
+    
+  }
+
+  .navbarMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  .navbarMenu.open {
+    transform: translateX(0);
+  }
 }
