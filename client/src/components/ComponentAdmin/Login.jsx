@@ -68,7 +68,7 @@ export const Login = () => {
                     />
             </div>
             <div className="mb-8">
-                {isError && <p className=" p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-md">{message}</p>}
+                {isError && <p className=" p-4 mb-4 text-sm text-red-700 bg-red-100  rounded-md">{message}</p>}
             </div>
             <button 
                 type="submit"

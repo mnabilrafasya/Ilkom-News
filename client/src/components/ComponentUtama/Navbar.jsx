@@ -1,15 +1,34 @@
 // src/components/Navbar.js
-import React from "react";
-import { useState } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
+import React, { useState, useRef, useEffect } from "react";
+import { FiMenu, FiX, FiChevronDown  } from "react-icons/fi";
 import styles from "./components.module.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
+
+  const toggleDropdown = (e) => {
+    e.preventDefault();
+    setDropdownOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+  
+    document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+  }, []);
 
   return (
     <nav className={styles.navbar}>
@@ -64,10 +83,28 @@ const Navbar = () => {
               Profile
             </a>
           </li>
-          <li>
-            <a href="#" className={styles.navbarLink}>
-              BEM Apps
+          <li className={styles.dropdownContainer} ref={dropdownRef}>
+            <a 
+              href="#" 
+              className={styles.navbarLink}
+              onClick={toggleDropdown}
+              >
+              BEM Apps <FiChevronDown className={styles.dropdownIcon} />
             </a>
+            {dropdownOpen && (
+              <ul className={styles.dropdownMenu}>
+                <li>
+                  <a href="/gaspol" className={styles.dropdownLink}>
+                    Gaspol
+                  </a>
+                </li>
+                <li>
+                  <a href="/e-magazine" className={styles.dropdownLink}>
+                    E-magazine
+                  </a>
+                </li>
+              </ul>
+            )}
           </li>
         </ul>
       </div>
