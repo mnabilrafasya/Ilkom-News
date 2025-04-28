@@ -34,7 +34,7 @@ const HeroSection = () => {
       <div className={styles.heroImageContainer}>
         <div className={styles.heroImageWrapper}>
           <img
-            src="/universitas-sriwijaya.jpg"
+            src="/fasilkom.jpg"
             alt="Universitas"
             className={styles.heroImage}
           />
