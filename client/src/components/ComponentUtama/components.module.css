@@ -239,7 +239,6 @@
 /* Hot News Section */
 .hotNewsSection {
   padding: 40px 24px;
-  background-color: #fff;
   max-width: 1500px;
   margin: 0 auto;
 }
@@ -261,7 +260,7 @@
 .hotNewsCard {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 6px rgba(180, 188, 201, 0.5);
+  box-shadow: 0 3px 6px rgba(180, 188, 201, 0.5);
   overflow: hidden;
   display: flex;
   flex-direction: column;

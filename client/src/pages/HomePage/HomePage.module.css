@@ -1,9 +1,28 @@
 .homepageContainer {
   font-family: "Gotham Book", cursive;
   color: #333;
-  background-color: #fff;
-  padding-top: 1rem;
   min-height: 100vh;
+}
+.body {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/Gradient-Home-FIX.jpg');
+  background-position: center center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  /* Blur */
+  filter: blur(8px);
+  /* Zoom sedikit untuk menutupi tepi */
+  z-index: -1;
 }
 
 /* Hero Section */
@@ -12,7 +31,6 @@
   display: flex;
   justify-content: space-between;
   padding: 50px 5%; /* ruang sisi kiri-kanan agar tidak mepet */
-  background-color: #fff;
   max-width: 1300px;
   margin: 0 auto;
 }
@@ -149,7 +167,6 @@
 /* Tab Section */
 .tabSection {
   padding: 40px 24px;
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -173,8 +190,12 @@
 }
 
 .tabButton {
+  background-color: transparent;
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  background-repeat: no-repeat;
   font-weight: 600;
-  background-color: white;
   border: none;
   padding: 8px 16px;
   cursor: pointer;
@@ -202,11 +223,11 @@
 }
 
 .card {
-  display: flex;
   background-color: #fff;
+  display: flex;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   height: 300px;           
 }
 
@@ -317,6 +338,11 @@
   }
 }
 
+@media (max-width: 768px) {
+  .body {
+    background-size: cover;
+}
+}
 /* --------------------------------------------- */
 /* Medium devices (481px – 768px)                */
 /* --------------------------------------------- */
