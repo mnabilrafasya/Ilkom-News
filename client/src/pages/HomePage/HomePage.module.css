@@ -379,7 +379,7 @@
 /* --------------------------------------------- */
 @media (min-width: 1025px) and (max-width: 1280px) {
   .heroSection {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
   }
   .heroImageWrapper {
@@ -396,7 +396,7 @@
 /* --------------------------------------------- */
 @media (min-width: 1281px) {
   .heroSection {
-    max-width: 1400px;
+    max-width: 1700px;
   }
   .heroImageWrapper {
     width: 500px;

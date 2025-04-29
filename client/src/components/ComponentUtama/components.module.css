@@ -489,7 +489,7 @@
 /* --------------------------------------------- */
 /* Ultra large devices (min-width: 1281px)       */
 /* --------------------------------------------- */
-@media (min-width: 1281px) {
+@media (min-width: 1281px)  and (max-width: 2000px) {
 
   .navbarInner {
     max-width: 1400px;
