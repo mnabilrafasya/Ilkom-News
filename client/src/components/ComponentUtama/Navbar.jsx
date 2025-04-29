@@ -40,10 +40,10 @@ const Navbar = () => {
             className={styles.logoImage}
           />
           <div className={styles.navbarText}>
-            <span className={styles.decorativeBold}>A</span>
-            <span className={styles.regular}>RTHA</span>{" "}
-            <span className={styles.regular}>DARM</span>
-            <span className={styles.decorativeBold}>A</span>
+            <span className={styles.decorativeBold}>I</span>
+            <span className={styles.regular}>LKOM</span>{" "}
+            <span className={styles.regular}>NEW</span>
+            <span className={styles.decorativeBold}>S</span>
             <br />
             BEM KM FASILKOM UNSRI
           </div>
@@ -84,22 +84,24 @@ const Navbar = () => {
             </a>
           </li>
           <li className={styles.dropdownContainer} ref={dropdownRef}>
-            <a 
-              href="#" 
-              className={styles.navbarLink}
-              onClick={toggleDropdown}
-              >
+            <a href="#" className={styles.navbarLink} onClick={toggleDropdown}>
               BEM Apps <FiChevronDown className={styles.dropdownIcon} />
             </a>
             {dropdownOpen && (
               <ul className={styles.dropdownMenu}>
                 <li>
-                  <a href="/gaspol" className={styles.dropdownLink}>
+                  <a
+                    href="https://gaspol.bemilkomunsri.org"
+                    className={styles.dropdownLink}
+                  >
                     Gaspol
                   </a>
                 </li>
                 <li>
-                  <a href="/e-magazine" className={styles.dropdownLink}>
+                  <a
+                    href="https://www.bemilkomunsri.org/majalah"
+                    className={styles.dropdownLink}
+                  >
                     E-magazine
                   </a>
                 </li>
