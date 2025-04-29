@@ -1,9 +1,25 @@
 .infoAkademikContainer {
   font-family: "Gotham Book", cursive;
   color: #333;
-  background-color: white;
-  padding-top: 1rem;
   min-height: 100vh;
+}
+
+.body {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../../assets/Gradient-Detail-Berita-FIX.jpg");
+  background-position: center center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 
 /* Post Header */
@@ -48,6 +64,7 @@
   margin: 1.5rem 0;
 }
 .featuredImage {
+  background-color: #fff;
   width: 100%;
   max-width: 900px;
   height: auto;
@@ -266,6 +283,9 @@
 
 /* Mobile landscape & large phones (≤768px) */
 @media (max-width: 768px) {
+  .body {
+    background-size: cover;
+  }
   .postTitle {
     font-size: 1.5rem;
   }
@@ -288,7 +308,7 @@
     font-size: 1.5rem;
   }
   .categoryButton {
-    font-size: 1rem; 
+    font-size: 1rem;
     display: flex; /* make it a flex container */
     justify-content: space-between;
     flex-wrap: wrap;
@@ -297,7 +317,6 @@
   .hotTopicGrid {
     grid-template-columns: 1fr 1fr;
   }
-
 }
 
 /* Mobile portrait (≤480px) */
